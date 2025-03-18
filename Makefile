@@ -1,9 +1,9 @@
 NAME = libftprintf.a
 CC = cc
-CFLAGS = -Wall -Wextr -Werror
+CFLAGS = -Wall -Wextra -Werror
 AR = ar -rcs
 
-MANDATORY = ft_putchar.c ft_putstr.c
+MANDATORY = ft_putchar.c ft_putstr.c ft_putnbr.c
 OBJS = $(MANDATORY:.c=.o)
 
 all: $(NAME)

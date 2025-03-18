@@ -16,9 +16,11 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdio.h>
 
 int ft_printf(const char *, ...);
-void    ft_putchar(char c);
-void    ft_putstr(char *str);
+int ft_putchar(char c);
+int ft_putstr(char *str);
+int ft_putnbr(int nbr);
 
 #endif
