@@ -10,13 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int    ft_putstr(char *str)
 {
     int count;
 
-    while(str && *str)
-       count += ft_putchar(*str++);
+    if(!str)
+        return (ft_putstr("(null)"));
+    count = 0;
+    while(*str)
+       count += ft_putchar(*(str++));
     return count;
 }

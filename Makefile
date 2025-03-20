@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar -rcs
 
-MANDATORY = ft_putchar.c ft_putstr.c ft_putnbr.c
+MANDATORY = ft_putchar.c ft_putstr.c ft_putnbr.c ft_printf.c ft_put_uns_int.c ft_puthex_low.c ft_puthex_upp.c ft_putptr.c
 OBJS = $(MANDATORY:.c=.o)
 
 all: $(NAME)

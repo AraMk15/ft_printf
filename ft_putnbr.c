@@ -1,4 +1,16 @@
-#include "printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 21:57:54 by marvin            #+#    #+#             */
+/*   Updated: 2025/03/20 21:57:55 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int ft_putnbr(int nbr)
 {
@@ -17,7 +29,7 @@ int ft_putnbr(int nbr)
         count += ft_putchar('-');
         nbr *= -1;
     }
-    else if (nbr >= 10)
+    if (nbr >= 10)
     {
         count += ft_putnbr(nbr / 10);
     }
