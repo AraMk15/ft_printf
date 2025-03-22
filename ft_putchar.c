@@ -6,13 +6,13 @@
 /*   By: armkrtch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 22:09:30 by armkrtch          #+#    #+#             */
-/*   Updated: 2025/03/13 22:09:36 by armkrtch         ###   ########.fr       */
+/*   Updated: 2025/03/22 19:58:22 by armkrtch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int    ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }

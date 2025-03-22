@@ -3,62 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: armkrtch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 22:20:15 by armkrtch          #+#    #+#             */
-/*   Updated: 2025/03/22 18:09:55 by marvin           ###   ########.fr       */
+/*   Created: 2025/03/22 20:08:46 by armkrtch          #+#    #+#             */
+/*   Updated: 2025/03/22 20:37:30 by armkrtch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_valid(const char *first, va_list args)
+int	ft_valid(const char *first, va_list args, int count)
 {
-    int  count;
-
-
-    count = 0;
-    while (*first)
-    {
-        if (*first == '%')
-        {
-            first++;
-            if (*first == 'c')
-                count += ft_putchar(va_arg(args, int));
-            else if (*first == 's')
-                count += ft_putstr(va_arg(args, char *));
-            else if (*first == 'd' || *first == 'i')
-                count += ft_putnbr(va_arg(args, int));
-            else if(*first == 'u')
-                count += ft_put_uns_int(va_arg(args, unsigned int));
-            else if(*first == 'x')
-                count += ft_puthex_low(va_arg(args, unsigned int),"0123456789abcdef");
-            else if(*first == 'X')
-                count += ft_puthex_low(va_arg(args, unsigned int),"0123456789ABCDEF");
-            else if(*first == 'p')
-                count += ft_putptr((size_t)va_arg(args, void *),"0123456789abcdef");
-            else if (*first == '%')
-                count += ft_putchar('%');
-        }
-        else
-            count += ft_putchar(*first);
-        first++;
-    }
-    return count;
+	while (*first)
+	{
+		if (*first == '%')
+		{
+			first++;
+			count = ft_handle_specifier(*first, args, count);
+		}
+		else
+			count += ft_putchar(*first);
+		first++;
+	}
+	return (count);
 }
 
-int ft_printf(const char *first, ...)
+int	ft_handle_specifier(char specifier, va_list args, int count)
 {
-    va_list args;
-    int count;
-
-    va_start(args, first);
-    
-    count = ft_valid(first, args);
-    va_end(args);
-    return (count);
+	if (specifier == 'c')
+		count += ft_putchar(va_arg(args, int));
+	else if (specifier == 's')
+		count += ft_putstr(va_arg(args, char *));
+	else if (specifier == 'd' || specifier == 'i')
+		count += ft_putnbr(va_arg(args, int));
+	else if (specifier == 'u')
+		count += ft_put_uns_int(va_arg(args, unsigned int));
+	else if (specifier == 'x')
+		count += ft_puthex_low(va_arg(args, unsigned int), "0123456789abcdef");
+	else if (specifier == 'X')
+		count += ft_puthex_low(va_arg(args, unsigned int), "0123456789ABCDEF");
+	else if (specifier == 'p')
+		count += ft_putptr((size_t)va_arg(args, void *), "0123456789abcdef");
+	else if (specifier == '%')
+		count += ft_putchar('%');
+	return (count);
 }
 
+int	ft_printf(const char *first, ...)
+{
+	va_list		args;
+	int			count;
+
+	count = 0;
+	va_start(args, first);
+	count = ft_valid(first, args, count);
+	va_end(args);
+	return (count);
+}
 /*
 int main() {
     ft_printf("Character: %c\n", 'A');
