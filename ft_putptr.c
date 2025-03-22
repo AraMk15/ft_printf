@@ -12,15 +12,17 @@
 
 #include "ft_printf.h"
 
-int ft_putptr(unsigned long long nbr, char *format)
+int ft_putptr(size_t nbr, char *format)
 {
     int count;
-    char c;
-    
-    count = 0;
-    if (nbr >= 16)
-        count += ft_putptr(nbr / 16, format);
-    c = format[nbr % 16];
-    count += ft_putchar(c);
-    return (count );
+    int new;
+
+    if (nbr == 0)
+    {
+        new = ft_putstr("(nil)");
+        return (new);
+    }
+    count = ft_putstr("0x");
+    count += ft_puthex_low(nbr, format);
+    return (count);
 }

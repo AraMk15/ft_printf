@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armkrtch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 22:20:41 by armkrtch          #+#    #+#             */
-/*   Updated: 2025/03/13 22:20:46 by armkrtch         ###   ########.fr       */
+/*   Updated: 2025/03/22 18:05:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int ft_putchar(char c);
 int ft_putstr(char *str);
 int ft_putnbr(int nbr);
 int ft_put_uns_int(unsigned int nbr);
-int ft_puthex_low(unsigned int nbr, char *format);
-int ft_putptr(unsigned long long nbr, char *format);
+int ft_puthex_low(size_t nbr, char *format);
+int ft_putptr(size_t nbr, char *format);
 int ft_puthex_upp(unsigned int nbr, char *format);
 
 #endif
